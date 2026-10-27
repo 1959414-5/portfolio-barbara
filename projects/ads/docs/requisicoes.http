@@ -1,0 +1,36 @@
+### Listar solicitações
+GET http://localhost:8080/api/solicitacoes
+Accept: application/json
+
+### Filtrar por status
+GET http://localhost:8080/api/solicitacoes?status=ABERTA
+Accept: application/json
+
+### Criar uma solicitação fictícia
+POST http://localhost:8080/api/solicitacoes
+Content-Type: application/json
+
+{
+  "titulo": "Acesso ao relatório de treinamento",
+  "descricao": "Usuário fictício não consegue acessar o relatório do ambiente de demonstração.",
+  "solicitante": "Jo Demo",
+  "departamento": "Financeiro",
+  "prioridade": "ALTA"
+}
+
+### Consultar solicitação por ID
+GET http://localhost:8080/api/solicitacoes/1
+Accept: application/json
+
+### Alterar status
+PATCH http://localhost:8080/api/solicitacoes/1/status
+Content-Type: application/json
+
+{
+  "status": "EM_ATENDIMENTO",
+  "observacao": "Atribuído para análise no cenário demonstrativo."
+}
+
+### Consultar histórico de status
+GET http://localhost:8080/api/solicitacoes/1/historico
+Accept: application/json
