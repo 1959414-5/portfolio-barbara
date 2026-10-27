@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101712">
+<meta name="description" content="Trilha de ADS de Bárbara Paschoalin: Java, Spring Boot, API REST, SQL, testes e documentação por meio de um projeto de solicitações internas fictício.">
+<title>Desenvolvimento de Sistemas | Bárbara Paschoalin</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">B<span>.</span></span><span class="brand-copy"><strong>Bárbara Paschoalin</strong><small>PORTFÓLIO TÉCNICO</small></span></a><nav class="top-nav" aria-label="Navegação principal"><a href="index.html#trilhas">Trilhas</a><a href="#projeto">Projeto principal</a><a href="#tecnica">Implementação</a></nav><a class="header-link" href="index.html">← Início</a></header>
+<main id="conteudo">
+<section class="section-wrap subpage-hero">
+<div class="breadcrumbs"><a href="index.html">Início</a> / Desenvolvimento de Sistemas</div>
+<span class="subpage-label blue">TRILHA 02 · ADS · DESENVOLVIMENTO</span>
+<h1>Construir sistemas que <em>resolvam o problema.</em></h1>
+<p class="hero-lead">Esta trilha demonstra desenvolvimento de aplicações, regras de negócio, persistência relacional, APIs REST, validação de entradas, testes e documentação. O projeto principal é um portal de solicitações internas com cenário inteiramente fictício.</p>
+<div class="pill-row"><span class="pill blue">Java 21</span><span class="pill blue">Spring Boot</span><span class="pill blue">REST API</span><span class="pill blue">JPA</span><span class="pill blue">H2 / SQL</span><span class="pill blue">JUnit</span></div>
+<div class="site-nav-sub"><a class="active" href="#projeto">Projeto principal</a><a href="#tecnica">Detalhes técnicos</a><a href="#executar">Como executar</a></div>
+</section>
+<section id="projeto" class="section-wrap content-section">
+<div class="section-heading"><div><p class="eyebrow">PROJETO DEMONSTRATIVO · DADOS SINTÉTICOS</p><h2>Portal de solicitações <em>internas.</em></h2></div><p>Uma empresa fictícia precisa registrar chamados, manter histórico e organizar o atendimento de solicitações relacionadas a sistemas corporativos.</p></div>
+<div class="content-grid">
+<article class="panel"><h2>O problema</h2><p class="muted">Solicitações espalhadas por canais diferentes tornam difícil acompanhar responsáveis, prioridades, status e histórico de atendimento. O portal propõe um único fluxo com regras claras.</p><div class="callout blue">Escopo didático: esta é uma aplicação demonstrativa. Não é um sistema corporativo em produção e não contém dados reais de usuários ou empresas.</div><div class="pill-row"><span class="pill blue">Cadastro</span><span class="pill blue">Consulta</span><span class="pill blue">Atualização de status</span><span class="pill blue">Histórico</span></div></article>
+<article class="panel"><h2>O que demonstra</h2><ul class="step-list"><li><strong>API REST</strong><br>Endpoints para cadastrar, listar, consultar e mudar status das solicitações.</li><li><strong>Persistência</strong><br>Entidades relacionadas, repositório Spring Data JPA e banco H2 para desenvolvimento.</li><li><strong>Regras e validação</strong><br>Campos obrigatórios, prioridades e transições de status com mensagens de erro.</li></ul></article>
+</div>
+<div class="section-title-row"><h2>Arquitetura resumida</h2><p>Responsabilidades divididas em camadas para facilitar leitura e manutenção.</p></div>
+<div class="content-grid">
+<article class="panel"><h3>Fluxo de uma requisição</h3><div class="code-block">Cliente HTTP / Interface web
+          ↓
+SolicitacaoController
+          ↓
+SolicitacaoService
+          ↓
+SolicitacaoRepository
+          ↓
+Banco H2 (desenvolvimento)
+          ↓
+Resposta HTTP / JSON</div></article>
+<article class="panel"><h3>Regras principais</h3><ul class="step-list"><li>Uma solicitação nasce com status <strong>ABERTA</strong>.</li><li>O status só pode mudar segundo as transições documentadas.</li><li>Alterações de status geram um registro de histórico.</li><li>Identificadores inexistentes retornam erro HTTP adequado.</li></ul></article>
+</div>
+<div id="tecnica" class="section-title-row"><h2>Materiais técnicos</h2><p>O código, o modelo de dados e os exemplos de requisição ficam versionados no repositório.</p></div>
+<div class="list-links">
+<a class="list-link" href="projects/ads/README.md"><span>README · instalação, configuração e testes</span>↗</a>
+<a class="list-link" href="projects/ads/pom.xml"><span>Maven · dependências do projeto</span>↗</a>
+<a class="list-link" href="projects/ads/src/main/java/br/com/barbarapaschoalin/portal/PortalSolicitacoesApplication.java"><span>Java · classe principal Spring Boot</span>↗</a>
+<a class="list-link" href="projects/ads/src/main/java/br/com/barbarapaschoalin/portal/api/SolicitacaoController.java"><span>Java · controller e endpoints REST</span>↗</a>
+<a class="list-link" href="projects/ads/src/main/java/br/com/barbarapaschoalin/portal/service/SolicitacaoService.java"><span>Java · regras de negócio</span>↗</a>
+<a class="list-link" href="projects/ads/src/main/java/br/com/barbarapaschoalin/portal/domain/Solicitacao.java"><span>Java · entidade de domínio</span>↗</a>
+<a class="list-link" href="projects/ads/src/main/resources/static/index.html"><span>Interface web servida pela aplicação</span>↗</a>
+<a class="list-link" href="projects/ads/sql/schema-postgresql.sql"><span>SQL · esquema relacional PostgreSQL</span>↗</a>
+<a class="list-link" href="projects/ads/docs/requisicoes.http"><span>Requisições HTTP de exemplo</span>↗</a>
+</div>
+<div id="executar" class="section-title-row"><h2>Como executar localmente</h2><p>O recrutador pode clonar o repositório e testar a API. O site estático não executa o backend diretamente no GitHub Pages.</p></div>
+<article class="panel"><ol class="step-list"><li>Instale um JDK compatível com a versão indicada no README e o Maven.</li><li>Clone o repositório e entre na pasta <code>projects/ads</code>.</li><li>Execute <code>mvn test</code> para rodar os testes automatizados.</li><li>Execute <code>mvn spring-boot:run</code> e abra <code>http://localhost:8080</code>.</li><li>Use os exemplos em <code>docs/requisicoes.http</code> ou a coleção Postman para testar os endpoints.</li></ol><div class="project-actions"><a class="blue-mini" href="projects/ads/README.md">Abrir documentação</a><a href="projects/ads/docs/requisicoes.http">Ver chamadas HTTP</a></div></article>
+<div class="video-placeholder"><span class="video-play">▶</span><div><strong>Vídeo de demonstração</strong><small>Espaço reservado para gravação da aplicação em execução, do fluxo de solicitações e de alguns testes da API.</small><a href="docs/guia-videos.md">Consultar roteiro de gravação</a></div></div>
+</section>
+<div class="site-end-note">Projeto demonstrativo com dados fictícios. Validar execução e testes localmente antes de afirmar que a aplicação está funcionando.</div>
+</main>
+<footer class="site-footer"><a class="brand brand-small" href="index.html"><span class="brand-mark">B<span>.</span></span><span class="brand-copy"><strong>Bárbara Paschoalin</strong><small>PORTFÓLIO TÉCNICO</small></span></a><p><a href="index.html">← Página inicial</a> · <a href="dados.html">Ir para Dados & BI →</a></p><span>© <span id="year"></span></span></footer>
+</body></html>
