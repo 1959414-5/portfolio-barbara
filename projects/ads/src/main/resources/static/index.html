@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Portal de Solicitações · Demo</title><link rel="stylesheet" href="/app.css"></head>
+<body>
+<header><div><span class="overline">AMBIENTE DEMONSTRATIVO</span><h1>Portal de Solicitações</h1><p>Fluxo fictício de atendimento de sistemas internos</p></div><span class="api-pill">API REST · LOCAL</span></header>
+<main>
+<section class="summary"><div><span>Total de solicitações</span><strong id="total">—</strong></div><div><span>Abertas</span><strong id="open">—</strong></div><div><span>Em atendimento</span><strong id="working">—</strong></div><div><span>Resolvidas</span><strong id="resolved">—</strong></div></section>
+<section class="card"><div class="card-heading"><div><span class="overline">GERENCIAMENTO</span><h2>Solicitações recentes</h2></div><button id="newBtn">+ Nova solicitação</button></div>
+<div class="toolbar"><label>Filtrar por status <select id="statusFilter"><option value="">Todos os status</option><option>ABERTA</option><option>EM_ATENDIMENTO</option><option>RESOLVIDA</option><option>CANCELADA</option></select></label><button class="secondary" id="refreshBtn">Atualizar</button></div>
+<div id="notice" role="status"></div><div class="table-wrap"><table><thead><tr><th>ID / Título</th><th>Solicitante</th><th>Departamento</th><th>Prioridade</th><th>Status</th><th>Ação</th></tr></thead><tbody id="rows"><tr><td colspan="6">Carregando...</td></tr></tbody></table></div></section>
+<section class="card" id="formCard" hidden><div class="card-heading"><div><span class="overline">NOVO REGISTRO</span><h2>Criar solicitação</h2></div></div><form id="createForm"><div class="form-grid"><label>Título<input name="titulo" maxlength="120" required></label><label>Solicitante fictício<input name="solicitante" maxlength="100" required></label><label>Departamento<input name="departamento" maxlength="80" required></label><label>Prioridade<select name="prioridade"><option>BAIXA</option><option selected>MEDIA</option><option>ALTA</option><option>URGENTE</option></select></label><label class="wide">Descrição<textarea name="descricao" maxlength="2000" rows="3" required></textarea></label></div><div class="form-actions"><button type="button" class="secondary" id="cancelBtn">Cancelar</button><button type="submit">Salvar solicitação</button></div></form></section>
+<section class="card"><div class="card-heading"><div><span class="overline">AUDITORIA</span><h2>Histórico de status</h2></div></div><p class="muted">Selecione uma solicitação na tabela para consultar suas mudanças de status.</p><div id="history">Nenhuma solicitação selecionada.</div></section>
+</main><footer>Dados de exemplo 100% sintéticos. Aplicação didática — não usar com dados pessoais ou em produção.</footer><script src="/app.js"></script>
+</body></html>
