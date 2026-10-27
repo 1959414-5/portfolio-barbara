@@ -1,0 +1,1 @@
+Esta é a interface que o Spring Boot serve na raiz http://localhost:8080 quando a aplicação está executando localmente. O backend não é hospedado pelo GitHub Pages.
