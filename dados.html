@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101712">
+<meta name="description" content="Trilha de Dados & BI de Bárbara Paschoalin: limpeza de dados, SQL, análise de atrasos e Power BI com dados 100% sintéticos.">
+<title>Dados & BI | Bárbara Paschoalin</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><script defer src="app.js"></script><script defer src="dados-demo.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">B<span>.</span></span><span class="brand-copy"><strong>Bárbara Paschoalin</strong><small>PORTFÓLIO TÉCNICO</small></span></a><nav class="top-nav" aria-label="Navegação principal"><a href="index.html#trilhas">Trilhas</a><a href="#estudo">Estudo de caso</a><a href="#metodo">Método</a></nav><a class="header-link" href="index.html">← Início</a></header>
+<main id="conteudo">
+<section class="section-wrap subpage-hero">
+<div class="breadcrumbs"><a href="index.html">Início</a> / Dados & BI</div>
+<span class="subpage-label">TRILHA 01 · ANÁLISE · BI · DADOS</span>
+<h1>Uma pergunta clara vale mais que <em>dez dashboards.</em></h1>
+<p class="hero-lead">Esta trilha mostra o raciocínio completo de uma análise: entender a pergunta de negócio, encontrar problemas nos dados, limpá-los, consultar com SQL, identificar padrões e sugerir uma decisão apoiada por evidências.</p>
+<div class="pill-row"><span class="pill">Python / Pandas</span><span class="pill">SQL</span><span class="pill">Power BI / DAX</span><span class="pill">Qualidade de dados</span></div>
+<div class="site-nav-sub"><a class="active" href="#estudo">Estudo de caso</a><a href="#explorador">Explorador interativo</a><a href="#documentacao">Código e documentação</a></div>
+</section>
+<section id="estudo" class="section-wrap content-section">
+<div class="section-heading"><div><p class="eyebrow">ESTUDO DE CASO · DADOS SINTÉTICOS</p><h2>Atrasos de pedidos: <em>onde priorizar?</em></h2></div><p>Uma simulação de operação comercial para demonstrar uma análise reproduzível. Todos os registros, códigos de cliente e vendedores são fictícios.</p></div>
+<div class="callout">Pergunta de negócio: <strong>quais sinais ajudam a equipe a identificar entregas atrasadas e priorizar pedidos que ainda precisam de ação?</strong> O objetivo não é apenas medir atrasos, mas mostrar como a qualidade dos dados afeta a decisão.</div>
+<div class="metric-grid">
+<div class="metric-card"><strong>250</strong><span>Linhas brutas geradas</span></div>
+<div class="metric-card"><strong>233</strong><span>Registros válidos após a limpeza</span></div>
+<div class="metric-card"><strong>31,7%</strong><span>58 atrasos entre 183 pedidos entregues</span></div>
+</div>
+<div class="content-grid">
+<article class="panel">
+<h2>O que a análise encontrou</h2>
+<p class="muted">Neste cenário simulado, a análise separa os atrasos já ocorridos dos pedidos em aberto que passaram do prazo. Essa distinção importa porque cada grupo exige uma ação diferente.</p>
+<div class="bar-list">
+<div class="bar-row"><span>Entregues no prazo</span><div class="bar-track"><div class="bar-fill" style="width:68.3%"></div></div><b>125</b></div>
+<div class="bar-row"><span>Entregues atrasados</span><div class="bar-track"><div class="bar-fill" style="width:31.7%;background:linear-gradient(90deg,#b85d52,#ff9abb)"></div></div><b style="color:#ffb3c5">58</b></div>
+<div class="bar-row"><span>Em aberto vencidos</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:linear-gradient(90deg,#526eaf,#8fb7ff)"></div></div><b style="color:#8fb7ff">40</b></div>
+</div>
+<p class="muted" style="font-size:10px;margin-top:15px">A primeira e a segunda barra compõem os 183 pedidos entregues. Os 40 em aberto vencidos são uma categoria separada. Dados demonstrativos, não indicadores de uma empresa real.</p>
+</article>
+<article class="panel">
+<h2>Decisão que os insights apoiariam</h2>
+<ul class="step-list">
+<li><strong>Agir primeiro nos pedidos em aberto vencidos.</strong><br>Gerar uma fila de acompanhamento por dias de atraso e prazo prometido.</li>
+<li><strong>Investigar os motivos dos atrasos já ocorridos.</strong><br>Segmentar por região, período e responsável, sem concluir causalidade só por correlação.</li>
+<li><strong>Melhorar a qualidade da fonte.</strong><br>Padronizar datas, valores e categorias antes de usar os indicadores em decisões.</li>
+</ul>
+</article>
+</div>
+<div id="metodo" class="section-title-row"><h2>Do dado bruto ao insight</h2><p>Etapas documentadas para que outro profissional consiga reproduzir e criticar o raciocínio.</p></div>
+<div class="content-grid">
+<article class="panel"><h3>01 · Limpeza e validação</h3><p class="muted">A base de entrada contém duplicações, variações de grafia, datas em formatos diferentes e valores com representações inconsistentes. O script normaliza campos, trata tipos e registra as linhas descartadas por regras explícitas.</p><div class="pill-row"><span class="pill">Pandas</span><span class="pill">Duplicidades</span><span class="pill">Datas</span><span class="pill">Auditoria</span></div></article>
+<article class="panel"><h3>02 · Consultas SQL</h3><p class="muted">Consultas separam pedidos entregues de pendências, calculam atraso em dias e resumem indicadores por região. A documentação inclui versões compatíveis com SQLite e PostgreSQL quando houver diferenças de sintaxe.</p><div class="pill-row"><span class="pill">WHERE</span><span class="pill">JOIN</span><span class="pill">GROUP BY</span><span class="pill">CTE</span></div></article>
+</div>
+<div id="explorador" class="section-title-row"><h2>Explorador interativo</h2><p>Filtre um pequeno conjunto demonstrativo no navegador. Nenhum dado externo é carregado.</p></div>
+<div class="panel">
+<div class="metric-grid" id="demoMetrics"><div class="metric-card"><strong id="demoTotal">—</strong><span>Pedidos no recorte</span></div><div class="metric-card"><strong id="demoLate">—</strong><span>Pedidos atrasados</span></div><div class="metric-card"><strong id="demoRate">—</strong><span>Taxa de atraso no recorte</span></div></div>
+<div class="demo-controls"><label>Região<select id="filterRegion"><option value="Todas">Todas</option><option value="Sul">Sul</option><option value="Sudeste">Sudeste</option><option value="Centro-Oeste">Centro-Oeste</option><option value="Nordeste">Nordeste</option></select></label><label>Status<select id="filterStatus"><option value="Todos">Todos</option><option value="Entregue">Entregue</option><option value="Em aberto">Em aberto</option></select></label><label>Prazo<select id="filterDelay"><option value="Todos">Todos</option><option value="Atrasado">Atrasado</option><option value="No prazo">No prazo</option></select></label></div>
+<div class="demo-table-wrap"><table class="demo-table"><thead><tr><th>Pedido</th><th>Região</th><th>Status</th><th>Prazo</th><th>Atraso</th></tr></thead><tbody id="demoTable"><tr><td colspan="5">Carregando amostra fictícia…</td></tr></tbody></table></div>
+<p class="muted" style="font-size:10px;margin:15px 0 0">A tabela interativa usa uma amostra fictícia compacta para navegação web. As 250 linhas completas são geradas pelo script Python disponível no código do projeto.</p>
+</div>
+<div id="documentacao" class="section-title-row"><h2>Documentação e arquivos</h2><p>O projeto pode ser baixado, executado e examinado. Abra os arquivos para revisar o código ou reproduzir a análise localmente.</p></div>
+<div class="list-links">
+<a class="list-link" href="projects/dados/README.md"><span>Guia do projeto e instruções para reproduzir</span>↗</a>
+<a class="list-link" href="projects/dados/generate_orders.py"><span>Python · Gerador determinístico de 250 linhas sintéticas</span>↗</a>
+<a class="list-link" href="projects/dados/clean_orders.py"><span>Python / Pandas · Pipeline de limpeza e validação</span>↗</a>
+<a class="list-link" href="projects/dados/queries.sql"><span>SQL · Consultas analíticas</span>↗</a>
+<a class="list-link" href="projects/dados/dicionario.md"><span>Dicionário de dados e regras de qualidade</span>↗</a>
+<a class="list-link" href="projects/dados/requirements.txt"><span>Dependências Python</span>↗</a>
+</div>
+<div class="video-placeholder"><span class="video-play">▶</span><div><strong>Vídeo de demonstração</strong><small>Espaço reservado para o vídeo que Bárbara gravará mostrando a limpeza, as consultas e a interpretação dos resultados.</small><a href="docs/guia-videos.md">Consultar roteiro de gravação</a></div></div>
+</section>
+<div class="site-end-note">Todos os registros e números deste estudo são sintéticos. Não representam clientes, pedidos ou resultados de empresas reais.</div>
+</main>
+<footer class="site-footer"><a class="brand brand-small" href="index.html"><span class="brand-mark">B<span>.</span></span><span class="brand-copy"><strong>Bárbara Paschoalin</strong><small>PORTFÓLIO TÉCNICO</small></span></a><p><a href="index.html">← Página inicial</a> · <a href="ads.html">Ir para ADS →</a></p><span>© <span id="year"></span></span></footer>
+</body></html>
